@@ -12,11 +12,6 @@ Migrate data securely and efficiently from **S3 (Source)** to **EFS (Destination
 
 ---
 
-## 🏗️ Architecture Diagram
-![AWS DataSync Architecture](1.png)
-
----
-
 ## ⚙️ AWS Services Used
 | Service | Purpose |
 |----------|----------|
@@ -31,33 +26,39 @@ Migrate data securely and efficiently from **S3 (Source)** to **EFS (Destination
 ## 🧩 Implementation Steps
 
 ### 1️⃣ Create Source
-- Create a **Private S3 Bucket** (example: `prathamesh-s3-source`)
+- Create a **Private S3 Bucket** 
 ### Source S3 Bucket
 ![Source S3 Bucket](PRO-SS/data-sync-source-1.png)
 
 
+
 ### 2️⃣ Create Destination
-- Create an **EFS file system** (example: `prathamesh-efs-target`)
+- Create an **EFS file system** 
+![EFS](DataSync-EFS.png)
 
 ### 3️⃣ Deploy DataSync Agent
 - Launch an **EC2 instance** using **AWS DataSync Agent AMI**
-- Connect the agent in the **DataSync Console**
+![EC2](EC2.png)
 
-### 4️⃣ Configure Security Group
-- Allow **NFS (2049)**, **SSH (22)**, and **HTTP (80)**
+- Connect the agent in the **DataSync Console**
+![DataSynceagent](Agent.png)
 
 ### 5️⃣ Create a Task in DataSync
 - **Source Location:** S3 bucket  
 - **Destination Location:** EFS file system  
 - Configure options and run the task
+![task](Task.png)
+![task2](TaskExc.png)
 
 ### 6️⃣ Verify Migration
-- Launch another EC2 instance  
+- Launch another EC2 instance 
+![console](console.png) 
 - Mount the EFS and verify the migrated files:
   ```bash
-  sudo yum install -y nfs-utils
-  sudo mkdir /mnt/efs
-  sudo mount -t nfs4 <EFS_DNS_NAME>:/ /mnt/efs
-  cd /mnt/efs
+  ec2-user
+  yum install -y nfs-utils
+  mkdir efs
+  mount -t nfs4 :/ /efs
+  cd efs
   ls
 
