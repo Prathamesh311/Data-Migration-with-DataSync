@@ -32,7 +32,9 @@ Migrate data securely and efficiently from **S3 (Source)** to **EFS (Destination
 
 ### 1️⃣ Create Source
 - Create a **Private S3 Bucket** (example: `prathamesh-s3-source`)
-- Upload a few sample objects
+### Source S3 Bucket
+![Source S3 Bucket](PRO-SS/data-sync-source-1.png)
+
 
 ### 2️⃣ Create Destination
 - Create an **EFS file system** (example: `prathamesh-efs-target`)
