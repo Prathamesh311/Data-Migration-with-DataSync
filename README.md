@@ -71,7 +71,7 @@ The overall architecture consists of the following components:
 - Configured filters and transfer settings as required.
 
 📸 *Screenshot:*  
-![Task Creation](PRO-SS/Task.png)
+![Task Execution](PRO-SS/TaskExc.png)
 
 ---
 
@@ -79,9 +79,8 @@ The overall architecture consists of the following components:
 - Started the task to initiate data migration.  
 - Monitored the transfer progress and verified that all source objects were copied successfully to EFS.
 
-📸 *Screenshot:*  
-![Task Execution](PRO-SS/TaskExc.png)
-
+📸 *Screenshot:*
+![Task Creation](PRO-SS/Task.png)
 ---
 
 ### 6️⃣ Verify and Monitor in AWS DataSync Console
