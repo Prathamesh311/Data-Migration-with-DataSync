@@ -30,35 +30,45 @@ Migrate data securely and efficiently from **S3 (Source)** to **EFS (Destination
 ### Source S3 Bucket
 ![Source S3 Bucket](PRO-SS/data-sync-source-1.png)
 
-
-
 ### 2️⃣ Create Destination
-- Create an **EFS file system** 
-![EFS](DataSync-EFS.png)
+- Create an **EFS file system** to store the migrated data.
+
+📸 *Screenshot:*  
+![EFS Destination](PRO-SS/DataSync-EFS.png)
+
+---
 
 ### 3️⃣ Deploy DataSync Agent
-- Launch an **EC2 instance** using **AWS DataSync Agent AMI**
-![EC2](EC2.png)
+- Launch an **EC2 instance** using the AWS DataSync Agent AMI.
+- Connect the agent in the **DataSync Console**.
 
-- Connect the agent in the **DataSync Console**
-![DataSynceagent](Agent.png)
+📸 *Screenshot:*  
+![DataSync Agent](PRO-SS/Agent.png)
 
-### 5️⃣ Create a Task in DataSync
-- **Source Location:** S3 bucket  
-- **Destination Location:** EFS file system  
-- Configure options and run the task
-![task](Task.png)
-![task2](TaskExc.png)
+---
 
-### 6️⃣ Verify Migration
-- Launch another EC2 instance 
-![console](console.png) 
-- Mount the EFS and verify the migrated files:
-  ```bash
-  ec2-user
-  yum install -y nfs-utils
-  mkdir efs
-  mount -t nfs4 :/ /efs
-  cd efs
-  ls
+### 4️⃣ Create and Run DataSync Task
+- Source Location → S3 bucket  
+- Destination Location → EFS file system  
+- Configure task options and **execute the task**.
+
+📸 *Screenshots:*  
+![Task Creation](PRO-SS/Task.png)  
+![Task Execution](PRO-SS/TaskExc.png)
+
+---
+
+### 5️⃣ Verify Migration
+- Launch an **EC2 instance**.
+- Mount the EFS and verify migrated files.
+
+📸 *Screenshot:*  
+![EC2 Verification](PRO-SS/EC2.png)
+
+```bash
+sudo yum install -y nfs-utils
+mkdir efs
+sudo mount -t nfs4 <EFS-DNS>:/ efs
+cd efs
+ls
 
