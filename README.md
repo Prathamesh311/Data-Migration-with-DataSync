@@ -107,7 +107,8 @@ sudo mount -t nfs4 fs-0629251dced9a4ec0.efs.ap-south-1.amazonaws.com:/ efs/
 cd efs
 
 ls
----
+```
+
 
 ### 💬 Final Thoughts
 
